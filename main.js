@@ -200,21 +200,58 @@ const filterProfanity = (text) => {
     return filteredText;
 };
 
+// Admin Configuration
+const ADMIN_IP = "192.168.45.148";
+let isAdmin = false;
+
+// Check Admin Status
+const checkAdminStatus = async () => {
+    try {
+        const response = await fetch("https://api.ipify.org?format=json");
+        const data = await response.json();
+        if (data.ip === ADMIN_IP) {
+            isAdmin = true;
+            console.log("Admin mode activated");
+            loadComments(); // Re-load comments to show delete buttons
+        }
+    } catch (error) {
+        console.error("Failed to check admin status:", error);
+    }
+};
+
 // Comment Logic
 const loadComments = () => {
     const comments = JSON.parse(localStorage.getItem("comments") || "[]");
     commentList.innerHTML = "";
     const lang = localStorage.getItem("lang") || "ko";
     
-    comments.forEach(comment => {
+    comments.forEach((comment, index) => {
         const div = document.createElement("div");
         div.className = "comment-item";
+        
+        let deleteBtn = "";
+        if (isAdmin) {
+            deleteBtn = `<button class="delete-comment-btn" onclick="deleteComment(${index})">×</button>`;
+        }
+
         div.innerHTML = `
-            <div class="author">${translations[lang].anonymous}</div>
+            <div class="comment-header">
+                <div class="author">${translations[lang].anonymous}</div>
+                ${deleteBtn}
+            </div>
             <div class="text">${comment.text}</div>
         `;
         commentList.appendChild(div);
     });
+};
+
+window.deleteComment = (index) => {
+    if (!confirm("정말 이 댓글을 삭제하시겠습니까?")) return;
+    
+    const comments = JSON.parse(localStorage.getItem("comments") || "[]");
+    comments.splice(index, 1);
+    localStorage.setItem("comments", JSON.stringify(comments));
+    loadComments();
 };
 
 commentForm.addEventListener("submit", (e) => {
@@ -236,3 +273,4 @@ commentForm.addEventListener("submit", (e) => {
 // Initial Load
 displayLottoSets(1);
 loadComments();
+checkAdminStatus();
