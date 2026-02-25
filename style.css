@@ -167,11 +167,11 @@ h1 {
 #lotto-sets-container {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-bottom: 40px;
-    max-height: 400px;
+    gap: 10px;
+    margin-bottom: 30px;
+    max-height: 480px;
     overflow-y: auto;
-    padding-right: 10px;
+    padding-right: 8px;
 }
 
 #lotto-sets-container::-webkit-scrollbar {
@@ -186,22 +186,22 @@ h1 {
 .lotto-set {
     background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--shadow-color);
-    padding: 16px;
-    border-radius: 20px;
+    padding: 12px;
+    border-radius: 16px;
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
 .lotto-number {
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
