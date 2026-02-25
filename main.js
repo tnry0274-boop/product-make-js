@@ -1,8 +1,10 @@
-const lottoNumbersContainer = document.querySelector(".lotto-numbers");
+const lottoSetsContainer = document.querySelector("#lotto-sets-container");
 const generateBtn = document.querySelector("#generate-btn");
 const themeToggle = document.querySelector("#theme-toggle");
 const languageSelect = document.querySelector("#language-select");
 const title = document.querySelector("#title");
+const setCountInput = document.querySelector("#set-count");
+const countLabel = document.querySelector("#count-label");
 
 // Partnership Form elements
 const partnershipTitle = document.querySelector("#partnership-title");
@@ -25,6 +27,7 @@ const translations = {
         title: "로또 번호 추천",
         button: "번호 생성",
         docTitle: "로또 번호 생성기",
+        countLabel: "생성할 세트 수 (최대 30):",
         partnership: "제휴 문의",
         namePlace: "성함",
         emailPlace: "이메일 주소",
@@ -37,7 +40,7 @@ const translations = {
         aboutTitle: "로또 번호 생성기 정보",
         aboutText: "이 도구는 1부터 45 사이의 무작위 번호 6개를 생성하여 로또 번호를 추천해 드립니다. 행운을 빌어요!",
         howTitle: "사용 방법",
-        howText: "'번호 생성' 버튼을 클릭하면 새로운 무작위 번호 세트가 나타납니다. 각 번호는 실제 로또 규정에 맞게 색상이 지정됩니다.",
+        howText: "'번호 생성' 버튼을 클릭하면 새로운 무작위 번호 세트가 나타납니다. 최대 30세트까지 한 번에 생성할 수 있습니다.",
         privacyTitle: "개인정보 처리방침",
         privacyText: "본 사이트는 사용자에게 맞춤형 서비스를 제공하기 위해 쿠키를 사용할 수 있습니다. 수집된 정보는 서비스 개선 목적으로만 사용되며 제3자에게 제공되지 않습니다. Google AdSense 광고를 위해 Google에서 쿠키를 사용할 수 있습니다."
     },
@@ -45,6 +48,7 @@ const translations = {
         title: "Lotto Number Recommendation",
         button: "Generate Numbers",
         docTitle: "Lotto Number Generator",
+        countLabel: "Number of sets (max 30):",
         partnership: "Partnership Inquiry",
         namePlace: "Your Name",
         emailPlace: "Your Email",
@@ -57,7 +61,7 @@ const translations = {
         aboutTitle: "About Lotto Generator",
         aboutText: "This tool provides random lotto number recommendations by generating 6 unique numbers between 1 and 45. Good luck!",
         howTitle: "How to Use",
-        howText: "Simply click the 'Generate Numbers' button to get a new set of random numbers. Each number is color-coded according to official lotto standards.",
+        howText: "Click the 'Generate Numbers' button to get new sets. You can generate up to 30 sets at once.",
         privacyTitle: "Privacy Policy",
         privacyText: "This site may use cookies to provide personalized services. Collected information is used solely for service improvement and is not shared with third parties. Google may use cookies for AdSense advertising."
     },
@@ -65,6 +69,7 @@ const translations = {
         title: "大乐透号码推荐",
         button: "生成号码",
         docTitle: "乐透号码生成器",
+        countLabel: "生成组数 (最大 30):",
         partnership: "合作咨询",
         namePlace: "姓名",
         emailPlace: "电子邮件",
@@ -77,7 +82,7 @@ const translations = {
         aboutTitle: "关于乐透生成器",
         aboutText: "该工具通过在 1 到 45 之间生成 6 个唯一的随机数字来提供乐透号码推荐。祝你好运！",
         howTitle: "如何使用",
-        howText: "只需点击'生成号码'按钮即可获得一组新的随机数字。每个号码都根据官方乐透标准进行颜色编码。",
+        howText: "点击'生成号码'按钮即可获得新的一组或多组数字。您可以一次生成多达 30 组数字。",
         privacyTitle: "隐私政策",
         privacyText: "本网站可能使用 Cookie 来提供个性化服务。收集的信息仅用于改进服务，不会与第三方共享。Google 可能会将 Cookie 用于 AdSense 广告。"
     }
@@ -86,6 +91,7 @@ const translations = {
 const updateLanguage = (lang) => {
     title.textContent = translations[lang].title;
     generateBtn.textContent = translations[lang].button;
+    countLabel.textContent = translations[lang].countLabel;
     document.title = translations[lang].docTitle;
     
     // Update Partnership Form
@@ -152,20 +158,30 @@ const getNumberColor = (number) => {
     return "#b0d840";
 };
 
-const displayLottoNumbers = (numbers) => {
-    lottoNumbersContainer.innerHTML = "";
-    numbers.forEach(number => {
-        const numberDiv = document.createElement("div");
-        numberDiv.classList.add("lotto-number");
-        numberDiv.textContent = number;
-        numberDiv.style.backgroundColor = getNumberColor(number);
-        lottoNumbersContainer.appendChild(numberDiv);
-    });
+const displayLottoSets = (count) => {
+    lottoSetsContainer.innerHTML = "";
+    const validatedCount = Math.min(Math.max(count, 1), 30);
+    
+    for (let i = 0; i < validatedCount; i++) {
+        const numbers = generateLottoNumbers();
+        const setDiv = document.createElement("div");
+        setDiv.className = "lotto-set";
+        
+        numbers.forEach(number => {
+            const numberDiv = document.createElement("div");
+            numberDiv.classList.add("lotto-number");
+            numberDiv.textContent = number;
+            numberDiv.style.backgroundColor = getNumberColor(number);
+            setDiv.appendChild(numberDiv);
+        });
+        
+        lottoSetsContainer.appendChild(setDiv);
+    }
 };
 
 generateBtn.addEventListener("click", () => {
-    const lottoNumbers = generateLottoNumbers();
-    displayLottoNumbers(lottoNumbers);
+    const count = parseInt(setCountInput.value) || 1;
+    displayLottoSets(count);
 });
 
 // Comment Logic
@@ -200,5 +216,5 @@ commentForm.addEventListener("submit", (e) => {
 });
 
 // Initial Load
-displayLottoNumbers(generateLottoNumbers());
+displayLottoSets(1);
 loadComments();
