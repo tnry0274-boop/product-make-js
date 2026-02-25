@@ -36,12 +36,13 @@ const translations = {
         commentTextPlace: "댓글을 입력하세요... (비속어는 자동 필터링됩니다)",
         commentSubmitBtn: "댓글 등록",
         anonymous: "익명",
-        aboutTitle: "로또 번호 생성기 정보",
-        aboutText: "이 도구는 1부터 45 사이의 무작위 번호 6개를 생성하여 로또 번호를 추천해 드립니다. 행운을 빌어요!",
-        howTitle: "사용 방법",
-        howText: "'번호 생성' 버튼을 클릭하면 새로운 무작위 번호 세트가 나타납니다. 최대 30세트까지 한 번에 생성할 수 있습니다.",
+        aboutTitle: "서비스 소개",
+        aboutText: "이 도구는 최신 난수 생성 알고리즘을 사용하여 1부터 45 사이의 무작위 번호 6개를 생성합니다. 각 번호는 공식 로또 규정에 맞게 색상별로 시각화되어 제공됩니다.",
+        howTitle: "구체적인 사용 방법",
+        howText: "1. 상단 수량 입력칸에 1에서 30 사이의 숫자를 입력합니다. 2. '번호 생성' 버튼을 클릭합니다. 3. 즉석에서 번호 조합이 생성되며, 아래로 스크롤하여 모든 세트를 확인할 수 있습니다.",
         privacyTitle: "개인정보 처리방침",
-        privacyText: "본 사이트는 사용자에게 맞춤형 서비스를 제공하기 위해 쿠키를 사용할 수 있습니다. 수집된 정보는 서비스 개선 목적으로만 사용되며 제3자에게 제공되지 않습니다. Google AdSense 광고를 위해 Google에서 쿠키를 사용할 수 있습니다."
+        privacyText: "본 사이트는 사용자 경험 개선을 위해 브라우저 저장소(localStorage)와 쿠키를 활용할 수 있습니다. 수집된 데이터는 통계 및 광고 최적화 목적으로만 활용됩니다.",
+        disclaimer: "※ 본 서비스는 재미와 참고를 위한 무작위 번호 생성 도구입니다. 실제 당첨을 보장하지 않으며, 결과에 대한 법적 책임은 사용자 본인에게 있습니다."
     },
     en: {
         title: "Lotto Number Recommendation",
@@ -57,12 +58,13 @@ const translations = {
         commentTextPlace: "Add a comment... (Profanity will be filtered)",
         commentSubmitBtn: "Post Comment",
         anonymous: "Anonymous",
-        aboutTitle: "About Lotto Generator",
-        aboutText: "This tool provides random lotto number recommendations by generating 6 unique numbers between 1 and 45. Good luck!",
+        aboutTitle: "About This Service",
+        aboutText: "This tool generates 6 unique random numbers between 1 and 45 using a modern randomization algorithm, visualized with official lotto colors.",
         howTitle: "How to Use",
-        howText: "Click the 'Generate Numbers' button to get new sets. You can generate up to 30 sets at once.",
+        howText: "1. Enter a number between 1 and 30 in the input field. 2. Click the 'Generate Numbers' button. 3. New combinations will appear instantly; scroll down to see all sets.",
         privacyTitle: "Privacy Policy",
-        privacyText: "This site may use cookies to provide personalized services. Collected information is used solely for service improvement and is not shared with third parties. Google may use cookies for AdSense advertising."
+        privacyText: "This site uses cookies and localStorage to improve user experience. Data is used solely for analytics and AdSense optimization.",
+        disclaimer: "※ This service is a random generation tool for entertainment purposes only. We do not guarantee any winnings, and users are responsible for their own actions."
     },
     zh: {
         title: "大乐透号码推荐",
@@ -78,12 +80,35 @@ const translations = {
         commentTextPlace: "添加评论... (将过滤脏话)",
         commentSubmitBtn: "发表评论",
         anonymous: "匿名",
-        aboutTitle: "关于乐透生成器",
-        aboutText: "该工具通过在 1 到 45 之间生成 6 个唯一的随机数字来提供乐透号码推荐。祝你好运！",
-        howTitle: "如何使用",
-        howText: "点击'生成号码'按钮即可获得新的一组或多组数字。您可以一次生成多达 30 组数字。",
+        aboutTitle: "服务介绍",
+        aboutText: "该工具使用现代随机化算法生成 1 到 45 之间的 6 个唯一随机数，并以官方乐透颜色可视化显示。",
+        howTitle: "使用说明",
+        howText: "1. 在输入框中输入 1 到 30 之间的数字。 2. 点击'生成号码'按钮。 3. 新组合将立即出现；向下滚动即可查看所有组。",
         privacyTitle: "隐私政策",
-        privacyText: "本网站可能使用 Cookie 来提供个性化服务。收集的信息仅用于改进服务，不会与第三方共享。Google 可能会将 Cookie 用于 AdSense 广告。"
+        privacyText: "本网站使用 Cookie 和 localStorage 以改善用户体验。数据仅用于分析和广告优化。",
+        disclaimer: "※ 本服务仅为娱乐用途的随机生成工具。我们不保证任何中奖结果，用户需对自己的行为负责。"
+    },
+    jp: {
+        title: "ロト番号おすすめ",
+        button: "番号を生成",
+        docTitle: "ロト番号生成器",
+        countLabel: "生成セット数 (最大 30):",
+        partnership: "提携のお問い合わせ",
+        namePlace: "お名前",
+        emailPlace: "メールアドレス",
+        messagePlace: "お問い合わせ内容",
+        submitBtn: "送信する",
+        commentTitle: "コメント",
+        commentTextPlace: "コメントを入力してください... (不適切な言葉はフィルタリングされます)",
+        commentSubmitBtn: "コメントを投稿",
+        anonymous: "匿名",
+        aboutTitle: "サービスについて",
+        aboutText: "このツールは最新の乱数生成アルゴリズムを使用して、1から45までの重複しない6つの数字を生成し、公式の色で表示します。",
+        howTitle: "具体的な使い方",
+        howText: "1. 上の入力欄에 1から30までの数字を入力します。 2. 「番号を生成」ボタンをクリックします。 3. 瞬時に番号の組み合わせが生成され、スクロールして全セットを確認できます。",
+        privacyTitle: "プライバシーポリシー",
+        privacyText: "当サイトはユーザー体験向上のためにクッキーおよびlocalStorageを使用する場合があります。データは統計および広告最適化の目的でのみ使用されます。",
+        disclaimer: "※ 本サービスは娯楽目的のランダム番号生成ツールです。当選を保証するものではなく、結果については自己責任でお願いいたします。"
     }
 };
 
@@ -112,6 +137,7 @@ const updateLanguage = (lang) => {
     document.querySelector("#how-text").textContent = translations[lang].howText;
     document.querySelector("#privacy-title").textContent = translations[lang].privacyTitle;
     document.querySelector("#privacy-text").textContent = translations[lang].privacyText;
+    document.querySelector("#disclaimer-text").textContent = translations[lang].disclaimer;
 
     localStorage.setItem("lang", lang);
     languageSelect.value = lang;
@@ -184,16 +210,13 @@ generateBtn.addEventListener("click", () => {
 
 // Profanity Filter
 const badWords = [
-    // Korean common profanity (Add more as needed)
     "시발", "씨발", "병신", "개새끼", "지랄", "존나", "빡치네", "미친",
-    // English common profanity
     "fuck", "shit", "bastard", "asshole", "bitches", "dick"
 ]; 
 
 const filterProfanity = (text) => {
     let filteredText = text;
     badWords.forEach(word => {
-        // Use regex to match words more accurately, including variations
         const regex = new RegExp(word, "gi");
         filteredText = filteredText.replace(regex, (match) => "*".repeat(match.length));
     });
@@ -208,9 +231,6 @@ const isAdmin = urlParams.get("admin") === ADMIN_KEY;
 if (isAdmin) {
     console.log("Admin mode activated via secret key");
 }
-
-// Lotto Logic...
-// (Keep existing translations, lotto generation, and theme logic)
 
 // Comment Logic
 const loadComments = () => {
