@@ -13,7 +13,18 @@
 </head>
 <body>
     <div class="container">
+        <div class="top-navigation">
+            <nav class="main-nav">
+                <button class="nav-btn active" data-target="generator-section">홈</button>
+                <button class="nav-btn" data-target="analysis-section">확률 분석</button>
+                <button class="nav-btn" data-target="tax-section">세금 정보</button>
+                <button class="nav-btn" data-target="stats-section">역대 통계</button>
+                <button class="nav-btn" data-target="privacy-section">정책</button>
+            </nav>
+        </div>
+
         <div class="top-controls">
+            <a href="blog.html" class="nav-link" aria-label="Go to AI Blog Writer">Blog →</a>
             <select id="language-select" aria-label="Select language">
                 <option value="ko">한국어</option>
                 <option value="en">English</option>
@@ -23,22 +34,49 @@
             <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
         </div>
         
-        <h1 id="title">Lotto Number Recommendation</h1>
-        
-        <section class="how-to-use-top">
-            <h2 id="how-title">How to Use</h2>
-            <p id="how-text"></p>
-        </section>
+        <!-- Generator Section (Home) -->
+        <div id="generator-section" class="tab-content active">
+            <h1 id="title">Lotto Number Recommendation</h1>
+            
+            <section class="how-to-use-top">
+                <h2 id="how-title">How to Use</h2>
+                <p id="how-text"></p>
+            </section>
 
-        <div class="generator-controls">
-            <div class="input-group">
-                <label for="set-count" id="count-label">Number of sets:</label>
-                <input type="number" id="set-count" min="1" max="30" value="1">
+            <div class="generator-controls">
+                <div class="input-group">
+                    <label for="set-count" id="count-label">Number of sets:</label>
+                    <input type="number" id="set-count" min="1" max="30" value="1">
+                </div>
+                <button id="generate-btn">Generate Numbers</button>
             </div>
-            <button id="generate-btn">Generate Numbers</button>
+
+            <div id="lotto-sets-container"></div>
         </div>
 
-        <div id="lotto-sets-container"></div>
+        <!-- Analysis Section -->
+        <div id="analysis-section" class="tab-content">
+            <h2 id="analysis-title">Winning Probability Analysis</h2>
+            <div id="analysis-content" class="rich-text-content"></div>
+        </div>
+
+        <!-- Tax Section -->
+        <div id="tax-section" class="tab-content">
+            <h2 id="tax-title">Tax Information</h2>
+            <div id="tax-content" class="rich-text-content"></div>
+        </div>
+
+        <!-- Stats Section -->
+        <div id="stats-section" class="tab-content">
+            <h2 id="stats-title">Historical Statistics</h2>
+            <div id="stats-content" class="rich-text-content"></div>
+        </div>
+
+        <!-- Privacy Section -->
+        <div id="privacy-section" class="tab-content">
+            <h2 id="policy-title">Privacy Policy & Terms</h2>
+            <div id="policy-content" class="rich-text-content"></div>
+        </div>
 
         <section class="info-section">
             <h2 id="about-title">About Lotto Generator</h2>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Blog Auto-Writer - Global Fortune Tool</title>
+    <meta name="description" content="Automatically generate blog posts with our AI-powered tool. Create content in seconds.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container blog-container">
+        <div class="top-controls">
+            <a href="index.html" class="nav-link" aria-label="Go to Lotto Generator">← Lotto</a>
+            <select id="language-select" aria-label="Select language">
+                <option value="ko">한국어</option>
+                <option value="en">English</option>
+                <option value="zh">中文</option>
+                <option value="jp">日本語</option>
+            </select>
+            <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+        
+        <h1 id="blog-title">AI Blog Auto-Writer</h1>
+        
+        <section class="how-to-use-top">
+            <h2 id="blog-guide-title">How to Use</h2>
+            <p id="blog-guide-text">Enter a topic, select a tone, and let the AI write for you.</p>
+        </section>
+
+        <div class="generator-controls">
+            <div class="input-group full-width">
+                <input type="text" id="topic-input" placeholder="Enter blog topic (e.g., Summer Vacation, Bitcoin Trends)..." class="main-input">
+            </div>
+            
+            <div class="options-row">
+                <select id="tone-select">
+                    <option value="informative">Informative</option>
+                    <option value="emotional">Emotional</option>
+                    <option value="funny">Humorous</option>
+                    <option value="critical">Critical</option>
+                </select>
+                <select id="length-select">
+                    <option value="short">Short</option>
+                    <option value="medium">Medium</option>
+                    <option value="long">Long</option>
+                </select>
+            </div>
+
+            <button id="generate-blog-btn">✍️ Write Blog Post</button>
+        </div>
+
+        <div id="loading-indicator" class="hidden">
+            <div class="spinner"></div>
+            <p>AI is thinking...</p>
+        </div>
+
+        <div id="result-area" class="hidden">
+            <div class="blog-preview">
+                <h2 id="generated-title"></h2>
+                <div id="generated-content"></div>
+            </div>
+            <div class="action-buttons">
+                <button id="copy-btn">Copy Text</button>
+                <button id="save-btn">Save to List</button>
+            </div>
+        </div>
+
+        <section class="saved-posts-section">
+            <h2 id="saved-title">Saved Posts</h2>
+            <div id="saved-list"></div>
+        </section>
+
+        <footer class="footer-section">
+            <p id="footer-note">Generated content is for reference only.</p>
+        </footer>
+    </div>
+    <script src="blog.js"></script>
+</body>
+</html>
