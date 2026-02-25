@@ -33,7 +33,13 @@ const translations = {
         commentTitle: "댓글",
         commentNamePlace: "이름",
         commentTextPlace: "댓글을 입력하세요...",
-        commentSubmitBtn: "댓글 등록"
+        commentSubmitBtn: "댓글 등록",
+        aboutTitle: "로또 번호 생성기 정보",
+        aboutText: "이 도구는 1부터 45 사이의 무작위 번호 6개를 생성하여 로또 번호를 추천해 드립니다. 행운을 빌어요!",
+        howTitle: "사용 방법",
+        howText: "'번호 생성' 버튼을 클릭하면 새로운 무작위 번호 세트가 나타납니다. 각 번호는 실제 로또 규정에 맞게 색상이 지정됩니다.",
+        privacyTitle: "개인정보 처리방침",
+        privacyText: "본 사이트는 사용자에게 맞춤형 서비스를 제공하기 위해 쿠키를 사용할 수 있습니다. 수집된 정보는 서비스 개선 목적으로만 사용되며 제3자에게 제공되지 않습니다. Google AdSense 광고를 위해 Google에서 쿠키를 사용할 수 있습니다."
     },
     en: {
         title: "Lotto Number Recommendation",
@@ -47,7 +53,13 @@ const translations = {
         commentTitle: "Comments",
         commentNamePlace: "Name",
         commentTextPlace: "Add a comment...",
-        commentSubmitBtn: "Post Comment"
+        commentSubmitBtn: "Post Comment",
+        aboutTitle: "About Lotto Generator",
+        aboutText: "This tool provides random lotto number recommendations by generating 6 unique numbers between 1 and 45. Good luck!",
+        howTitle: "How to Use",
+        howText: "Simply click the 'Generate Numbers' button to get a new set of random numbers. Each number is color-coded according to official lotto standards.",
+        privacyTitle: "Privacy Policy",
+        privacyText: "This site may use cookies to provide personalized services. Collected information is used solely for service improvement and is not shared with third parties. Google may use cookies for AdSense advertising."
     },
     zh: {
         title: "大乐透号码推荐",
@@ -61,7 +73,13 @@ const translations = {
         commentTitle: "评论",
         commentNamePlace: "姓名",
         commentTextPlace: "添加评论...",
-        commentSubmitBtn: "发表评论"
+        commentSubmitBtn: "发表评论",
+        aboutTitle: "关于乐透生成器",
+        aboutText: "该工具通过在 1 到 45 之间生成 6 个唯一的随机数字来提供乐透号码推荐。祝你好运！",
+        howTitle: "如何使用",
+        howText: "只需点击'生成号码'按钮即可获得一组新的随机数字。每个号码都根据官方乐透标准进行颜色编码。",
+        privacyTitle: "隐私政策",
+        privacyText: "本网站可能使用 Cookie 来提供个性化服务。收集的信息仅用于改进服务，不会与第三方共享。Google 可能会将 Cookie 用于 AdSense 广告。"
     }
 };
 
@@ -82,6 +100,14 @@ const updateLanguage = (lang) => {
     commentName.placeholder = translations[lang].commentNamePlace;
     commentText.placeholder = translations[lang].commentTextPlace;
     commentSubmit.textContent = translations[lang].commentSubmitBtn;
+
+    // Update AdSense Compliance Content
+    document.querySelector("#about-title").textContent = translations[lang].aboutTitle;
+    document.querySelector("#about-text").textContent = translations[lang].aboutText;
+    document.querySelector("#how-title").textContent = translations[lang].howTitle;
+    document.querySelector("#how-text").textContent = translations[lang].howText;
+    document.querySelector("#privacy-title").textContent = translations[lang].privacyTitle;
+    document.querySelector("#privacy-text").textContent = translations[lang].privacyText;
 
     localStorage.setItem("lang", lang);
     languageSelect.value = lang;

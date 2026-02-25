@@ -253,3 +253,29 @@ body {
 #comment-submit:hover {
     background-color: var(--btn-hover);
 }
+
+.info-section, .footer-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--shadow-color);
+    text-align: left;
+}
+
+.info-section h2, .footer-section h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.info-section p, .footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
