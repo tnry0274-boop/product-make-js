@@ -4,12 +4,20 @@ const themeToggle = document.querySelector("#theme-toggle");
 const languageSelect = document.querySelector("#language-select");
 const title = document.querySelector("#title");
 
-// Form elements
+// Partnership Form elements
 const partnershipTitle = document.querySelector("#partnership-title");
 const formName = document.querySelector("#form-name");
 const formEmail = document.querySelector("#form-email");
 const formMessage = document.querySelector("#form-message");
 const formSubmit = document.querySelector("#form-submit");
+
+// Comment elements
+const commentTitle = document.querySelector("#comment-title");
+const commentList = document.querySelector("#comment-list");
+const commentForm = document.querySelector("#comment-form");
+const commentName = document.querySelector("#comment-name");
+const commentText = document.querySelector("#comment-text");
+const commentSubmit = document.querySelector("#comment-submit");
 
 // Translations
 const translations = {
@@ -21,7 +29,11 @@ const translations = {
         namePlace: "성함",
         emailPlace: "이메일 주소",
         messagePlace: "문의 내용",
-        submitBtn: "문의하기"
+        submitBtn: "문의하기",
+        commentTitle: "댓글",
+        commentNamePlace: "이름",
+        commentTextPlace: "댓글을 입력하세요...",
+        commentSubmitBtn: "댓글 등록"
     },
     en: {
         title: "Lotto Number Recommendation",
@@ -31,7 +43,11 @@ const translations = {
         namePlace: "Your Name",
         emailPlace: "Your Email",
         messagePlace: "Your Message",
-        submitBtn: "Send Inquiry"
+        submitBtn: "Send Inquiry",
+        commentTitle: "Comments",
+        commentNamePlace: "Name",
+        commentTextPlace: "Add a comment...",
+        commentSubmitBtn: "Post Comment"
     },
     zh: {
         title: "大乐透号码推荐",
@@ -41,7 +57,11 @@ const translations = {
         namePlace: "姓名",
         emailPlace: "电子邮件",
         messagePlace: "咨询内容",
-        submitBtn: "提交咨询"
+        submitBtn: "提交咨询",
+        commentTitle: "评论",
+        commentNamePlace: "姓名",
+        commentTextPlace: "添加评论...",
+        commentSubmitBtn: "发表评论"
     }
 };
 
@@ -50,12 +70,18 @@ const updateLanguage = (lang) => {
     generateBtn.textContent = translations[lang].button;
     document.title = translations[lang].docTitle;
     
-    // Update Form Translations
+    // Update Partnership Form
     partnershipTitle.textContent = translations[lang].partnership;
     formName.placeholder = translations[lang].namePlace;
     formEmail.placeholder = translations[lang].emailPlace;
     formMessage.placeholder = translations[lang].messagePlace;
     formSubmit.textContent = translations[lang].submitBtn;
+
+    // Update Comment Section
+    commentTitle.textContent = translations[lang].commentTitle;
+    commentName.placeholder = translations[lang].commentNamePlace;
+    commentText.placeholder = translations[lang].commentTextPlace;
+    commentSubmit.textContent = translations[lang].commentSubmitBtn;
 
     localStorage.setItem("lang", lang);
     languageSelect.value = lang;
@@ -83,6 +109,7 @@ themeToggle.addEventListener("click", () => {
     themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
 });
 
+// Lotto Logic
 const generateLottoNumbers = () => {
     const numbers = new Set();
     while (numbers.size < 6) {
@@ -115,5 +142,37 @@ generateBtn.addEventListener("click", () => {
     displayLottoNumbers(lottoNumbers);
 });
 
-// Initial generation
+// Comment Logic
+const loadComments = () => {
+    const comments = JSON.parse(localStorage.getItem("comments") || "[]");
+    commentList.innerHTML = "";
+    comments.forEach(comment => {
+        const div = document.createElement("div");
+        div.className = "comment-item";
+        div.innerHTML = `
+            <div class="author">${comment.name}</div>
+            <div class="text">${comment.text}</div>
+        `;
+        commentList.appendChild(div);
+    });
+};
+
+commentForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const newComment = {
+        name: commentName.value,
+        text: commentText.value,
+        date: new Date().toISOString()
+    };
+    const comments = JSON.parse(localStorage.getItem("comments") || "[]");
+    comments.push(newComment);
+    localStorage.setItem("comments", JSON.stringify(comments));
+    
+    commentName.value = "";
+    commentText.value = "";
+    loadComments();
+});
+
+// Initial Load
 displayLottoNumbers(generateLottoNumbers());
+loadComments();
