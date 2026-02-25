@@ -1,5 +1,20 @@
 const lottoNumbersContainer = document.querySelector(".lotto-numbers");
 const generateBtn = document.querySelector("#generate-btn");
+const themeToggle = document.querySelector("#theme-toggle");
+
+// Theme Logic
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme === "dark") {
+    document.body.classList.add("dark-mode");
+    themeToggle.textContent = "☀️";
+}
+
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+    localStorage.setItem("theme", theme);
+    themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
+});
 
 const generateLottoNumbers = () => {
     const numbers = new Set();
