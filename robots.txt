@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tnry0274-boop.github.io/product-make-js/sitemap.xml
