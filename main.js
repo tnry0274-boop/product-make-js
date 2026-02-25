@@ -4,22 +4,44 @@ const themeToggle = document.querySelector("#theme-toggle");
 const languageSelect = document.querySelector("#language-select");
 const title = document.querySelector("#title");
 
+// Form elements
+const partnershipTitle = document.querySelector("#partnership-title");
+const formName = document.querySelector("#form-name");
+const formEmail = document.querySelector("#form-email");
+const formMessage = document.querySelector("#form-message");
+const formSubmit = document.querySelector("#form-submit");
+
 // Translations
 const translations = {
     ko: {
         title: "로또 번호 추천",
         button: "번호 생성",
-        docTitle: "로또 번호 생성기"
+        docTitle: "로또 번호 생성기",
+        partnership: "제휴 문의",
+        namePlace: "성함",
+        emailPlace: "이메일 주소",
+        messagePlace: "문의 내용",
+        submitBtn: "문의하기"
     },
     en: {
         title: "Lotto Number Recommendation",
         button: "Generate Numbers",
-        docTitle: "Lotto Number Generator"
+        docTitle: "Lotto Number Generator",
+        partnership: "Partnership Inquiry",
+        namePlace: "Your Name",
+        emailPlace: "Your Email",
+        messagePlace: "Your Message",
+        submitBtn: "Send Inquiry"
     },
     zh: {
         title: "大乐透号码推荐",
         button: "生成号码",
-        docTitle: "乐透号码生成器"
+        docTitle: "乐透号码生成器",
+        partnership: "合作咨询",
+        namePlace: "姓名",
+        emailPlace: "电子邮件",
+        messagePlace: "咨询内容",
+        submitBtn: "提交咨询"
     }
 };
 
@@ -27,6 +49,14 @@ const updateLanguage = (lang) => {
     title.textContent = translations[lang].title;
     generateBtn.textContent = translations[lang].button;
     document.title = translations[lang].docTitle;
+    
+    // Update Form Translations
+    partnershipTitle.textContent = translations[lang].partnership;
+    formName.placeholder = translations[lang].namePlace;
+    formEmail.placeholder = translations[lang].emailPlace;
+    formMessage.placeholder = translations[lang].messagePlace;
+    formSubmit.textContent = translations[lang].submitBtn;
+
     localStorage.setItem("lang", lang);
     languageSelect.value = lang;
 };
