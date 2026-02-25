@@ -201,23 +201,16 @@ const filterProfanity = (text) => {
 };
 
 // Admin Configuration
-const ADMIN_IP = "192.168.45.148";
-let isAdmin = false;
+const ADMIN_KEY = "854494";
+const urlParams = new URLSearchParams(window.location.search);
+const isAdmin = urlParams.get("admin") === ADMIN_KEY;
 
-// Check Admin Status
-const checkAdminStatus = async () => {
-    try {
-        const response = await fetch("https://api.ipify.org?format=json");
-        const data = await response.json();
-        if (data.ip === ADMIN_IP) {
-            isAdmin = true;
-            console.log("Admin mode activated");
-            loadComments(); // Re-load comments to show delete buttons
-        }
-    } catch (error) {
-        console.error("Failed to check admin status:", error);
-    }
-};
+if (isAdmin) {
+    console.log("Admin mode activated via secret key");
+}
+
+// Lotto Logic...
+// (Keep existing translations, lotto generation, and theme logic)
 
 // Comment Logic
 const loadComments = () => {
@@ -246,6 +239,7 @@ const loadComments = () => {
 };
 
 window.deleteComment = (index) => {
+    if (!isAdmin) return;
     if (!confirm("정말 이 댓글을 삭제하시겠습니까?")) return;
     
     const comments = JSON.parse(localStorage.getItem("comments") || "[]");
@@ -273,4 +267,3 @@ commentForm.addEventListener("submit", (e) => {
 // Initial Load
 displayLottoSets(1);
 loadComments();
-checkAdminStatus();
