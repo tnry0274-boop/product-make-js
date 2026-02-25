@@ -17,7 +17,6 @@ const formSubmit = document.querySelector("#form-submit");
 const commentTitle = document.querySelector("#comment-title");
 const commentList = document.querySelector("#comment-list");
 const commentForm = document.querySelector("#comment-form");
-const commentName = document.querySelector("#comment-name");
 const commentText = document.querySelector("#comment-text");
 const commentSubmit = document.querySelector("#comment-submit");
 
@@ -34,9 +33,9 @@ const translations = {
         messagePlace: "문의 내용",
         submitBtn: "문의하기",
         commentTitle: "댓글",
-        commentNamePlace: "이름",
-        commentTextPlace: "댓글을 입력하세요...",
+        commentTextPlace: "댓글을 입력하세요... (비속어는 자동 필터링됩니다)",
         commentSubmitBtn: "댓글 등록",
+        anonymous: "익명",
         aboutTitle: "로또 번호 생성기 정보",
         aboutText: "이 도구는 1부터 45 사이의 무작위 번호 6개를 생성하여 로또 번호를 추천해 드립니다. 행운을 빌어요!",
         howTitle: "사용 방법",
@@ -55,9 +54,9 @@ const translations = {
         messagePlace: "Your Message",
         submitBtn: "Send Inquiry",
         commentTitle: "Comments",
-        commentNamePlace: "Name",
-        commentTextPlace: "Add a comment...",
+        commentTextPlace: "Add a comment... (Profanity will be filtered)",
         commentSubmitBtn: "Post Comment",
+        anonymous: "Anonymous",
         aboutTitle: "About Lotto Generator",
         aboutText: "This tool provides random lotto number recommendations by generating 6 unique numbers between 1 and 45. Good luck!",
         howTitle: "How to Use",
@@ -76,9 +75,9 @@ const translations = {
         messagePlace: "咨询内容",
         submitBtn: "提交咨询",
         commentTitle: "评论",
-        commentNamePlace: "姓名",
-        commentTextPlace: "添加评论...",
+        commentTextPlace: "添加评论... (将过滤脏话)",
         commentSubmitBtn: "发表评论",
+        anonymous: "匿名",
         aboutTitle: "关于乐透生成器",
         aboutText: "该工具通过在 1 到 45 之间生成 6 个唯一的随机数字来提供乐透号码推荐。祝你好运！",
         howTitle: "如何使用",
@@ -103,7 +102,6 @@ const updateLanguage = (lang) => {
 
     // Update Comment Section
     commentTitle.textContent = translations[lang].commentTitle;
-    commentName.placeholder = translations[lang].commentNamePlace;
     commentText.placeholder = translations[lang].commentTextPlace;
     commentSubmit.textContent = translations[lang].commentSubmitBtn;
 
@@ -184,15 +182,29 @@ generateBtn.addEventListener("click", () => {
     displayLottoSets(count);
 });
 
+// Profanity Filter (Example list, should be expanded)
+const badWords = ["비속어1", "비속어2", "욕설1", "욕설2", "slang1", "slang2", "sexual1"]; 
+
+const filterProfanity = (text) => {
+    let filteredText = text;
+    badWords.forEach(word => {
+        const regex = new RegExp(word, "gi");
+        filteredText = filteredText.replace(regex, "***");
+    });
+    return filteredText;
+};
+
 // Comment Logic
 const loadComments = () => {
     const comments = JSON.parse(localStorage.getItem("comments") || "[]");
     commentList.innerHTML = "";
+    const lang = localStorage.getItem("lang") || "ko";
+    
     comments.forEach(comment => {
         const div = document.createElement("div");
         div.className = "comment-item";
         div.innerHTML = `
-            <div class="author">${comment.name}</div>
+            <div class="author">${translations[lang].anonymous}</div>
             <div class="text">${comment.text}</div>
         `;
         commentList.appendChild(div);
@@ -201,16 +213,16 @@ const loadComments = () => {
 
 commentForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    const filteredText = filterProfanity(commentText.value);
+    
     const newComment = {
-        name: commentName.value,
-        text: commentText.value,
+        text: filteredText,
         date: new Date().toISOString()
     };
     const comments = JSON.parse(localStorage.getItem("comments") || "[]");
     comments.push(newComment);
     localStorage.setItem("comments", JSON.stringify(comments));
     
-    commentName.value = "";
     commentText.value = "";
     loadComments();
 });
