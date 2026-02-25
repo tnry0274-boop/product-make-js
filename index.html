@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="theme-switch-wrapper">
+    <div class="top-controls">
+        <select id="language-select" aria-label="Select language">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+        </select>
         <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
     </div>
     <div class="container">
-        <h1>Lotto Number Recommendation</h1>
+        <h1 id="title">Lotto Number Recommendation</h1>
         <div class="lotto-numbers"></div>
         <button id="generate-btn">Generate Numbers</button>
     </div>
