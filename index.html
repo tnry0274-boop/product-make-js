@@ -62,6 +62,18 @@
         <!-- Tax Section -->
         <div id="tax-section" class="tab-content">
             <h2 id="tax-title">Tax Information</h2>
+            <div class="tax-calculator-card">
+                <h3 id="calc-title">실수령액 자동 계산기</h3>
+                <div class="input-group">
+                    <input type="number" id="prize-input" placeholder="당첨 금액 입력 (원)" min="0">
+                    <button id="calc-btn">계산하기</button>
+                </div>
+                <div id="calc-result" class="calc-result-box hidden">
+                    <div class="result-item"><span>총 당첨금:</span> <span id="res-total">0원</span></div>
+                    <div class="result-item"><span>공제 세금:</span> <span id="res-tax">0원</span></div>
+                    <div class="result-item highlight"><span>실수령액:</span> <span id="res-net">0원</span></div>
+                </div>
+            </div>
             <div id="tax-content" class="rich-text-content"></div>
         </div>
 
