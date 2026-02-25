@@ -182,14 +182,20 @@ generateBtn.addEventListener("click", () => {
     displayLottoSets(count);
 });
 
-// Profanity Filter (Example list, should be expanded)
-const badWords = ["비속어1", "비속어2", "욕설1", "욕설2", "slang1", "slang2", "sexual1"]; 
+// Profanity Filter
+const badWords = [
+    // Korean common profanity (Add more as needed)
+    "시발", "씨발", "병신", "개새끼", "지랄", "존나", "빡치네", "미친",
+    // English common profanity
+    "fuck", "shit", "bastard", "asshole", "bitches", "dick"
+]; 
 
 const filterProfanity = (text) => {
     let filteredText = text;
     badWords.forEach(word => {
+        // Use regex to match words more accurately, including variations
         const regex = new RegExp(word, "gi");
-        filteredText = filteredText.replace(regex, "***");
+        filteredText = filteredText.replace(regex, (match) => "*".repeat(match.length));
     });
     return filteredText;
 };
