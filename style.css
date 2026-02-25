@@ -261,6 +261,41 @@ h2 {
     border: 1px solid var(--shadow-color);
 }
 
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.comment-item .author {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--btn-bg);
+}
+
+.comment-item .author.admin-author {
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.comment-item .author.admin-author::before {
+    content: '★';
+    font-size: 14px;
+}
+
+.delete-comment-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+}
+
 .disclaimer-box {
     margin-top: 30px;
     padding: 20px;

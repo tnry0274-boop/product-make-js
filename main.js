@@ -24,6 +24,7 @@ const translations = {
         commentTextPlace: "댓글을 입력하세요... (비속어는 자동 필터링됩니다)",
         commentSubmitBtn: "댓글 등록",
         anonymous: "익명",
+        admin: "관리자",
         aboutTitle: "서비스 소개",
         aboutText: "이 도구는 최신 난수 생성 알고리즘을 사용하여 1부터 45 사이의 무작위 번호 6개를 생성합니다. 각 번호는 공식 로또 규정에 맞게 색상별로 시각화되어 제공됩니다.",
         howTitle: "구체적인 사용 방법",
@@ -41,6 +42,7 @@ const translations = {
         commentTextPlace: "Add a comment... (Profanity will be filtered)",
         commentSubmitBtn: "Post Comment",
         anonymous: "Anonymous",
+        admin: "Admin",
         aboutTitle: "About This Service",
         aboutText: "This tool generates 6 unique random numbers between 1 and 45 using a modern randomization algorithm, visualized with official lotto colors.",
         howTitle: "How to Use",
@@ -58,6 +60,7 @@ const translations = {
         commentTextPlace: "添加评论... (将过滤脏话)",
         commentSubmitBtn: "发表评论",
         anonymous: "匿名",
+        admin: "管理员",
         aboutTitle: "服务介绍",
         aboutText: "该工具使用现代随机化算法生成 1 到 45 之间的 6 个唯一随机数，并以官方乐透颜色可视化显示。",
         howTitle: "使用说明",
@@ -75,10 +78,11 @@ const translations = {
         commentTextPlace: "コメントを入力してください... (不適切な言葉はフィルタリングされます)",
         commentSubmitBtn: "コメントを投稿",
         anonymous: "匿名",
+        admin: "管理者",
         aboutTitle: "サービスについて",
         aboutText: "このツールは最新の乱数生成アルゴリズムを使用して、1から45までの重複しない6つの数字を生成し、公式の色で表示します。",
         howTitle: "具体的な使い方",
-        howText: "1. 上の入力欄に1から30までの数字を入力します。<br>2. 「番号を生成」ボタンをクリックします。<br>3. 瞬時に番号の組み合わせが生成され、スクロールして全セットを確認できます。",
+        howText: "1. 上の 입력란に1から30までの数字を入力します。<br>2. 「番号を生成」ボタンをクリックします。<br>3. 瞬時に番号の組み合わせが生成され、スクロールして全セットを確認できます。",
         privacyTitle: "プライバシーポリシー",
         privacyText: "当サイトはユーザー体験向上のためにクッキーおよびlocalStorageを使用する場合があります。データは統計および広告最適化の目的でのみ使用されます。",
         disclaimer: "※ 本サービスは娯楽目的のランダム番号生成ツールです。当選を保証するものではなく、結果については自己責任でお願いいたします。"
@@ -213,9 +217,11 @@ const loadComments = () => {
             deleteBtn = `<button class="delete-comment-btn" onclick="deleteComment(${index})">×</button>`;
         }
 
+        const authorName = comment.isAdmin ? translations[lang].admin : translations[lang].anonymous;
+
         div.innerHTML = `
             <div class="comment-header">
-                <div class="author">${translations[lang].anonymous}</div>
+                <div class="author ${comment.isAdmin ? 'admin-author' : ''}">${authorName}</div>
                 ${deleteBtn}
             </div>
             <div class="text">${comment.text}</div>
@@ -240,7 +246,8 @@ commentForm.addEventListener("submit", (e) => {
     
     const newComment = {
         text: filteredText,
-        date: new Date().toISOString()
+        date: new Date().toISOString(),
+        isAdmin: isAdmin
     };
     const comments = JSON.parse(localStorage.getItem("comments") || "[]");
     comments.push(newComment);
