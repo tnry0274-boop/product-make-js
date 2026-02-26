@@ -148,33 +148,74 @@ const translations = {
         anonymous: "Anonymous",
         admin: "Admin",
         aboutTitle: "About Our Service",
-        aboutText: "Our tool utilizes advanced randomization algorithms.",
+        aboutText: "This service applies Cryptographically Secure Pseudo-Random Number Generation (CSPRNG) principles to extract 6 unique numbers between 1 and 45. Users can refer to these numbers for various 6/45 lotto systems worldwide and visually check the distribution through an intuitive UI.",
         howTitle: "User Guide",
-        howText: "1. Set Quantity 2. Generate 3. Review 4. Engage",
+        howText: "1. Set Quantity: Select the number of sets (1-30) you want to analyze.<br>2. Run Algorithm: Click the 'Generate Numbers' button to start the random generation engine.<br>3. Analyze Results: Generated numbers are categorized and displayed according to official lottery ball color standards.<br>4. Share: Share your good luck with other users through the comment section below.",
         privacyTitle: "Privacy & Cookie Policy",
-        privacyText: "User preferences are stored locally.",
+        privacyText: "User preferences are stored locally and not transmitted externally. Third-party services, including Google AdSense, may use cookies to provide personalized advertisements.",
         termsTitle: "Terms of Service",
-        termsText: "This website provides random information for free.",
-        disclaimer: "※ Disclaimer: This is for entertainment purposes only.",
-        analysisTitle: "Lotto 6/45 Winning Probability",
+        termsText: "This website provides random information for free and does not require any financial transactions. Generated numbers are based on probability, and users are responsible for how they use them.",
+        disclaimer: "※ Warning: Please enjoy the lottery as entertainment, not gambling. This service does not guarantee winnings and assumes no legal responsibility.",
+        analysisTitle: "Lotto 6/45 Winning Probability Analysis",
         analysisBody: `
-            <h3>Winning Odds by Prize Tier</h3>
+            <h3>Odds by Prize Tier</h3>
             <table>
-                <tr><th>Tier</th><th>Condition</th><th>Fraction</th><th>Percentage</th></tr>
+                <tr><th>Rank</th><th>Condition</th><th>Probability (Fraction)</th><th>Probability (%)</th></tr>
                 <tr><td>1st</td><td>6 Main Numbers</td><td>1 / 8,145,060</td><td>0.0000122%</td></tr>
+                <tr><td>2nd</td><td>5 Main + Bonus Number</td><td>1 / 1,357,510</td><td>0.0000736%</td></tr>
+                <tr><td>3rd</td><td>5 Main Numbers</td><td>1 / 35,724</td><td>0.0028%</td></tr>
+                <tr><td>4th</td><td>4 Main Numbers</td><td>1 / 733</td><td>0.136%</td></tr>
                 <tr><td>5th</td><td>3 Main Numbers</td><td>1 / 45</td><td>2.22%</td></tr>
             </table>
+            <p>The probability of winning the 1st prize is approximately 0.0000122%. This system provides numbers based on random generation and does not guarantee winning.</p>
         `,
-        taxTitle: "Lottery Tax Regulations",
+        taxTitle: "Korean Lottery Tax Regulations",
         taxBody: `
+            <p>Korean Lottery (Lotto 6/45) prizes are classified as 'Other Income' and the following tax rates apply:</p>
             <ul>
-                <li><strong>Below 2M KRW:</strong> Tax-free (0%)</li>
-                <li><strong>2M - 300M KRW:</strong> 22% Tax</li>
-                <li><strong>Over 300M KRW:</strong> 33% Tax</li>
+                <li><strong>Under 2M KRW:</strong> Tax-free (0%)</li>
+                <li><strong>2M - 300M KRW:</strong> 22% (20% Income Tax + 2% Local Tax)</li>
+                <li><strong>Over 300M KRW:</strong> 33% (30% Income Tax + 3% Local Tax)</li>
             </ul>
+            <p>※ For prizes over 300 million KRW, 22% is applied to the first 300 million KRW, and 33% is applied only to the remaining amount.</p>
         `,
-        statsTitle: "Recent Draws & Stats",
-        statsBody: "<h3>Last 10 Winning Numbers</h3><p>Numbers that have appeared the least in recent draws.</p>"
+        statsTitle: "Recent Draws & Statistical Analysis",
+        statsBody: `
+            <h3>Latest 10 Winning Numbers</h3>
+            <table>
+                <thead>
+                    <tr><th>Draw</th><th>Winning Numbers</th><th>Bonus</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1158</td><td>2, 10, 14, 22, 32, 36</td><td>41</td></tr>
+                    <tr><td>1157</td><td>14, 16, 27, 35, 39, 45</td><td>5</td></tr>
+                    <tr><td>1156</td><td>1, 11, 21, 25, 38, 40</td><td>17</td></tr>
+                    <tr><td>1155</td><td>4, 9, 12, 16, 20, 29</td><td>45</td></tr>
+                    <tr><td>1154</td><td>6, 12, 19, 24, 34, 41</td><td>4</td></tr>
+                    <tr><td>1153</td><td>10, 15, 18, 21, 34, 42</td><td>6</td></tr>
+                    <tr><td>1152</td><td>7, 17, 22, 29, 31, 44</td><td>2</td></tr>
+                    <tr><td>1151</td><td>3, 12, 20, 25, 32, 44</td><td>21</td></tr>
+                    <tr><td>1150</td><td>1, 5, 8, 11, 28, 40</td><td>15</td></tr>
+                    <tr><td>1149</td><td>2, 11, 15, 23, 31, 41</td><td>45</td></tr>
+                </tbody>
+            </table>
+            
+            <h3 style="margin-top:30px;">Cold Numbers (Least frequent in last 100 draws)</h3>
+            <div class="badge-container">
+                <span class="stat-badge">No. 9 (6 times)</span>
+                <span class="stat-badge">No. 22 (7 times)</span>
+                <span class="stat-badge">No. 29 (7 times)</span>
+                <span class="stat-badge">No. 41 (8 times)</span>
+                <span class="stat-badge">No. 18 (8 times)</span>
+            </div>
+        `,
+        policyTitle: "Privacy Policy & Operation Policy",
+        policyBody: `
+            <h3>1. Collection and Use of Personal Information</h3>
+            <p>This site does not collect or store any personally identifiable information.</p>
+            <h3>2. Cookie and Advertising Policy</h3>
+            <p>Third-party vendors, including Google AdSense, use cookies to serve ads based on a user's prior visits to your website or other websites.</p>
+        `
     },
     zh: {
         navHome: "首页", navAnalysis: "概率分析", navTax: "税务信息", navStats: "历史统计", navPolicy: "政策",
@@ -301,7 +342,7 @@ navBtns.forEach(btn => {
 });
 
 // Initial Language Logic
-const savedLang = localStorage.getItem("lang") || "ko";
+const savedLang = localStorage.getItem("lang") || "en";
 updateLanguage(savedLang);
 
 languageSelect.addEventListener("change", (e) => {
