@@ -70,6 +70,8 @@ const translations = {
         termsTitle: "서비스 이용약관",
         termsText: "본 사이트는 정보를 제공할 뿐, 어떠한 금전적 거래도 요구하지 않습니다. 생성된 번호는 확률에 기반한 결과이며 결과에 대한 책임은 이용자에게 있습니다.",
         disclaimer: "※ 경고: 로또는 도박이 아닌 오락으로 즐겨주세요. 본 서비스는 당첨을 보장하지 않으며 어떠한 법적 책임도 지지 않습니다.",
+        officialLink: "동행복권 공식 당첨 확인",
+        latestDraw: "최신 {no}회 당첨 결과",
         analysisTitle: "로또 6/45 당첨 확률 상세 분석",
         analysisBody: `
             <h3>각 등수별 당첨 확률</h3>
@@ -198,6 +200,8 @@ const translations = {
         termsTitle: "Terms of Service",
         termsText: "This website provides random information for free and does not require any financial transactions. Generated numbers are based on probability, and users are responsible for how they use them.",
         disclaimer: "※ Warning: Please enjoy the lottery as entertainment, not gambling. This service does not guarantee winnings and assumes no legal responsibility.",
+        officialLink: "Check Official Results",
+        latestDraw: "Latest Result: Draw {no}",
         analysisTitle: "Lotto 6/45 Winning Probability Analysis",
         analysisBody: `
             <h3>Odds by Prize Tier</h3>
@@ -384,6 +388,8 @@ const updateLanguage = (lang) => {
     document.querySelector("#terms-text").textContent = translations[lang].termsText;
     document.querySelector("#disclaimer-text").textContent = translations[lang].disclaimer;
 
+    fetchLatestLotto();
+
     localStorage.setItem("lang", lang);
     languageSelect.value = lang;
 };
@@ -566,3 +572,71 @@ commentForm.addEventListener("submit", (e) => {
 // Initial Load
 displayLottoSets(1);
 loadComments();
+
+const getLatestDrawNumber = () => {
+    const firstDrawDate = new Date('2002-12-07T21:00:00+09:00'); // KST
+    const now = new Date();
+    const diff = now - firstDrawDate;
+    const weeks = Math.floor(diff / (7 * 24 * 60 * 60 * 1000));
+    
+    // Lotto draws are at 8:45 PM KST on Saturdays.
+    // If it's Saturday but before 9:00 PM (processing time), use last week's number.
+    const day = now.getDay();
+    const hour = now.getHours();
+    if (day === 6 && hour < 21) {
+        return weeks;
+    }
+    return weeks + 1;
+};
+
+const fetchLatestLotto = async () => {
+    const drwNo = getLatestDrawNumber();
+    const lang = localStorage.getItem("lang") || "en";
+    const liveDrawNo = document.querySelector("#live-draw-no");
+    const liveDrawDate = document.querySelector("#live-draw-date");
+    const liveNumbers = document.querySelector("#live-numbers");
+    const officialLinkText = document.querySelector("#official-link-text");
+
+    // Update Text with translation
+    officialLinkText.textContent = translations[lang].officialLink;
+
+    try {
+        const url = `https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=${drwNo}`;
+        const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+        const data = await response.json();
+        const lottoData = JSON.parse(data.contents);
+
+        if (lottoData.returnValue === "success") {
+            liveDrawNo.textContent = translations[lang].latestDraw.replace("{no}", lottoData.drwNo);
+            liveDrawDate.textContent = lottoData.drwNoDate;
+            
+            liveNumbers.innerHTML = "";
+            const nums = [lottoData.drwtNo1, lottoData.drwtNo2, lottoData.drwtNo3, lottoData.drwtNo4, lottoData.drwtNo5, lottoData.drwtNo6];
+            nums.forEach(n => {
+                const div = document.createElement("div");
+                div.className = "lotto-number";
+                div.style.backgroundColor = getNumberColor(n);
+                div.textContent = n;
+                liveNumbers.appendChild(div);
+            });
+            
+            // Add Bonus
+            const plus = document.createElement("span");
+            plus.textContent = "+";
+            plus.style.fontSize = "24px";
+            plus.style.margin = "0 5px";
+            liveNumbers.appendChild(plus);
+
+            const bonus = document.createElement("div");
+            bonus.className = "lotto-number";
+            bonus.style.backgroundColor = getNumberColor(lottoData.bnusNo);
+            bonus.textContent = lottoData.bnusNo;
+            liveNumbers.appendChild(bonus);
+        }
+    } catch (e) {
+        console.error("Failed to fetch", e);
+        liveDrawNo.textContent = "Unable to load latest data";
+    }
+};
+
+fetchLatestLotto();
