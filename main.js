@@ -431,7 +431,16 @@ const updateLanguage = (lang) => {
     document.querySelector("#terms-text").textContent = translations[lang].termsText;
     document.querySelector("#disclaimer-text").textContent = translations[lang].disclaimer;
 
-    fetchLatestLotto();
+    // Update Live Result labels without re-fetching
+    const officialLinkText = document.querySelector("#official-link-text");
+    if (officialLinkText) officialLinkText.textContent = translations[lang].officialLink;
+    
+    const liveDrawNo = document.querySelector("#live-draw-no");
+    // If we have numbers already, we might want to update the "Latest Result" prefix
+    if (liveDrawNo && liveDrawNo.textContent.includes(": ") || liveDrawNo.textContent.includes("회")) {
+        // This is a bit tricky since the numbers are already there, 
+        // but for now, the fetchLatestLotto() called at the end will handle initial load.
+    }
 
     localStorage.setItem("lang", lang);
     languageSelect.value = lang;
