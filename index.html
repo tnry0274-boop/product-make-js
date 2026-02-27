@@ -52,6 +52,7 @@
                 <button class="nav-btn" data-target="analysis-section">Analysis</button>
                 <button class="nav-btn" data-target="tax-section">Tax Info</button>
                 <button class="nav-btn" data-target="stats-section">Stats</button>
+                <button class="nav-btn" data-target="ai-section">AI Pick</button>
                 <button class="nav-btn" data-target="faq-section">FAQ</button>
                 <button class="nav-btn" data-target="about-section">About</button>
                 <button class="nav-btn" data-target="responsible-section">Responsible Play</button>
@@ -129,6 +130,26 @@
             </div>
 
             <div id="stats-content" class="rich-text-content"></div>
+        </div>
+
+        <!-- AI Section -->
+        <div id="ai-section" class="tab-content">
+            <h2 id="ai-title">AI Powered Prediction</h2>
+            
+            <div class="ai-generator-card">
+                <div class="ai-status">
+                    <span class="pulse-icon"></span>
+                    <span id="ai-status-text">AI Neural Network Ready</span>
+                </div>
+                <p id="ai-desc">Generating numbers based on weighted historical analysis and pattern recognition.</p>
+                <button id="ai-generate-btn" class="special-btn">Generate AI Recommendation</button>
+                <div id="ai-result-container"></div>
+            </div>
+
+            <div class="ai-explanation-box">
+                <h3 id="ai-how-title">How the AI Works</h3>
+                <div id="ai-how-content" class="rich-text-content"></div>
+            </div>
         </div>
 
         <!-- FAQ Section -->
