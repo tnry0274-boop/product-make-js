@@ -29,6 +29,9 @@ const commentSubmit = document.querySelector("#comment-submit");
 const analysisContent = document.querySelector("#analysis-content");
 const taxContent = document.querySelector("#tax-content");
 const statsContent = document.querySelector("#stats-content");
+const faqContent = document.querySelector("#faq-content");
+const aboutUsContent = document.querySelector("#about-us-content");
+const responsibleContent = document.querySelector("#responsible-content");
 const policyContent = document.querySelector("#policy-content");
 
 // Translations
@@ -38,6 +41,9 @@ const translations = {
         navAnalysis: "확률 분석",
         navTax: "세금 정보",
         navStats: "역대 통계",
+        navFaq: "자주 묻는 질문",
+        navAbout: "소개",
+        navResponsible: "책임 있는 게임",
         navPolicy: "정책",
         calcTitle: "실수령액 자동 계산기",
         prizePlaceholder: "당첨 금액 입력 (원)",
@@ -75,7 +81,9 @@ const translations = {
                 <tr><td>4등</td><td>4개 번호 일치</td><td>1 / 733</td><td>0.136%</td></tr>
                 <tr><td>5등</td><td>3개 번호 일치</td><td>1 / 45</td><td>2.22%</td></tr>
             </table>
-            <p>로또 1등 당첨 확률은 약 0.0000122%로 매우 희박합니다. 본 시스템은 난수 생성 기반의 번호를 제공하며 당첨을 보장하지 않습니다.</p>
+            <p>로또 1등 당첨 확률은 약 0.0000122%로 매우 희박합니다. 이는 벼락에 맞을 확률보다 낮다고 알려져 있습니다. 따라서 로또는 당첨을 목적으로 큰 돈을 투자하기보다는 소액으로 즐기는 건전한 오락이 되어야 합니다.</p>
+            <h3>수학적 관점에서의 전략</h3>
+            <p>모든 번호 조합은 동일한 확률을 가집니다. 특정 번호가 자주 나온다고 해서 다음 회차에 나올 확률이 높아지는 것은 아닙니다(도박사의 오류). 가장 좋은 전략은 본인만의 숫자를 정하거나, 완전히 무작위로 생성된 번호를 사용하는 것입니다.</p>
         `,
         taxTitle: "로또 당첨금 세금 규정",
         taxBody: `
@@ -86,6 +94,7 @@ const translations = {
                 <li><strong>3억원 초과:</strong> 33% (소득세 30% + 지방세 3%)</li>
             </ul>
             <p>※ 당첨금 3억 원 초과 시, 3억 원까지는 22%를 적용하고 이를 초과하는 나머지 금액에 대해서만 33%를 적용하여 합산합니다.</p>
+            <p><strong>예시:</strong> 당첨금이 10억 원인 경우, 3억 원에 대해 22%, 나머지 7억 원에 대해 33%가 적용됩니다.</p>
         `,
         statsTitle: "최근 당첨 번호 및 통계 분석",
         statsBody: `
@@ -109,6 +118,7 @@ const translations = {
             </table>
             
             <h3 style="margin-top:30px;">미출현 번호 분석 (최근 100회 기준 최소 출현)</h3>
+            <p>최근 100회 동안 상대적으로 적게 등장한 번호들입니다. 통계적으로는 모든 숫자의 출현 빈도가 수렴하지만, 단기적으로는 특정 숫자가 덜 나올 수 있습니다.</p>
             <div class="badge-container">
                 <span class="stat-badge">9번 (6회)</span>
                 <span class="stat-badge">22번 (7회)</span>
@@ -116,6 +126,35 @@ const translations = {
                 <span class="stat-badge">41번 (8회)</span>
                 <span class="stat-badge">18번 (8회)</span>
             </div>
+        `,
+        faqTitle: "자주 묻는 질문 (FAQ)",
+        faqBody: `
+            <div class="faq-item">
+                <h4>Q: 이 사이트에서 생성된 번호로 당첨될 수 있나요?</h4>
+                <p>A: 네, 가능합니다. 하지만 저희 시스템은 무작위 난수 생성 알고리즘을 사용하므로 당첨 확률은 수동으로 고르거나 자동 번호를 받는 것과 수학적으로 동일합니다.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Q: 서비스 이용료가 있나요?</h4>
+                <p>A: 아니요, 본 서비스는 100% 무료이며 어떠한 결제도 요구하지 않습니다.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Q: 개인정보를 저장하나요?</h4>
+                <p>A: 아니요, 저희는 사용자의 개인정보를 서버에 저장하지 않습니다. 모든 설정은 브라우저의 로컬 스토리지에만 저장됩니다.</p>
+            </div>
+        `,
+        aboutUsTitle: "회사 소개 및 비전",
+        aboutUsBody: `
+            <p>저희 팀은 사용자들에게 투명하고 신뢰할 수 있는 확률 정보를 제공하기 위해 모인 통계 전문가와 개발자들입니다. 단순한 번호 생성을 넘어, 로또와 관련된 다양한 데이터를 시각화하여 정보의 불균형을 해소하는 것을 목표로 합니다.</p>
+            <p><strong>문의 사항:</strong> help@lottogenerator.com (예시 이메일)</p>
+        `,
+        responsibleTitle: "책임 있는 게임 안내",
+        responsibleBody: `
+            <p>복권은 즐거운 오락이 되어야 합니다. 과도한 몰입은 일상생활에 지장을 줄 수 있습니다.</p>
+            <ul>
+                <li>본인의 경제적 능력 범위 내에서만 즐기세요.</li>
+                <li>로또를 수익 창출의 수단으로 생각하지 마세요.</li>
+                <li>도움이 필요하시면 한국도박문제예방치유원(1336)으로 문의하세요.</li>
+            </ul>
         `,
         policyTitle: "개인정보처리방침 및 서비스 운영 정책",
         policyBody: `
@@ -130,6 +169,9 @@ const translations = {
         navAnalysis: "Analysis",
         navTax: "Tax Info",
         navStats: "Stats",
+        navFaq: "FAQ",
+        navAbout: "About",
+        navResponsible: "Responsible Play",
         navPolicy: "Policy",
         calcTitle: "Net Payout Calculator",
         prizePlaceholder: "Enter prize amount",
@@ -167,7 +209,9 @@ const translations = {
                 <tr><td>4th</td><td>4 Main Numbers</td><td>1 / 733</td><td>0.136%</td></tr>
                 <tr><td>5th</td><td>3 Main Numbers</td><td>1 / 45</td><td>2.22%</td></tr>
             </table>
-            <p>The probability of winning the 1st prize is approximately 0.0000122%. This system provides numbers based on random generation and does not guarantee winning.</p>
+            <p>The probability of winning the 1st prize is approximately 0.0000122%. This is statistically less likely than being struck by lightning. Therefore, the lottery should be treated as a form of low-cost entertainment rather than a serious investment.</p>
+            <h3>Mathematical Strategy</h3>
+            <p>Every combination of numbers has an equal probability of being drawn. There is no evidence that "hot" or "cold" numbers affect the outcome of the next draw (Gambler's Fallacy). The best approach is to enjoy the randomness or pick numbers that have personal meaning to you.</p>
         `,
         taxTitle: "Korean Lottery Tax Regulations",
         taxBody: `
@@ -178,6 +222,7 @@ const translations = {
                 <li><strong>Over 300M KRW:</strong> 33% (30% Income Tax + 3% Local Tax)</li>
             </ul>
             <p>※ For prizes over 300 million KRW, 22% is applied to the first 300 million KRW, and 33% is applied only to the remaining amount.</p>
+            <p><strong>Example:</strong> For a 1 Billion KRW prize, 22% tax applies to the first 300M, and 33% to the remaining 700M.</p>
         `,
         statsTitle: "Recent Draws & Statistical Analysis",
         statsBody: `
@@ -201,6 +246,7 @@ const translations = {
             </table>
             
             <h3 style="margin-top:30px;">Cold Numbers (Least frequent in last 100 draws)</h3>
+            <p>These numbers have appeared the least frequently in the recent 100 draws. While every number is theoretically equally likely to appear, some may show up less often in a small sample size.</p>
             <div class="badge-container">
                 <span class="stat-badge">No. 9 (6 times)</span>
                 <span class="stat-badge">No. 22 (7 times)</span>
@@ -208,6 +254,35 @@ const translations = {
                 <span class="stat-badge">No. 41 (8 times)</span>
                 <span class="stat-badge">No. 18 (8 times)</span>
             </div>
+        `,
+        faqTitle: "Frequently Asked Questions (FAQ)",
+        faqBody: `
+            <div class="faq-item">
+                <h4>Q: Can I win with numbers generated here?</h4>
+                <p>A: Yes, it is possible. However, our system uses a random number generation algorithm, so the odds of winning are mathematically the same as any other method.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Q: Is there a fee to use this service?</h4>
+                <p>A: No, this service is 100% free and we never ask for any payment.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Q: Do you store personal information?</h4>
+                <p>A: No, we do not store any personal information on our servers. All settings are saved locally in your browser.</p>
+            </div>
+        `,
+        aboutUsTitle: "About Us & Vision",
+        aboutUsBody: `
+            <p>We are a team of data enthusiasts and developers dedicated to providing transparent and reliable probability information. Our goal is to empower users with data visualization and statistical insights related to the lottery.</p>
+            <p><strong>Contact:</strong> help@lottogenerator.com (Demo Email)</p>
+        `,
+        responsibleTitle: "Responsible Gaming Guide",
+        responsibleBody: `
+            <p>Playing the lottery should be fun. It is important to play responsibly to ensure it remains a form of entertainment.</p>
+            <ul>
+                <li>Only play with money you can afford to lose.</li>
+                <li>Do not view the lottery as a way to make money.</li>
+                <li>If you need help, please contact a local gambling support helpline.</li>
+            </ul>
         `,
         policyTitle: "Privacy Policy & Operation Policy",
         policyBody: `
@@ -253,7 +328,10 @@ const updateLanguage = (lang) => {
     navBtns[1].textContent = translations[lang].navAnalysis;
     navBtns[2].textContent = translations[lang].navTax;
     navBtns[3].textContent = translations[lang].navStats;
-    navBtns[4].textContent = translations[lang].navPolicy;
+    navBtns[4].textContent = translations[lang].navFaq;
+    navBtns[5].textContent = translations[lang].navAbout;
+    navBtns[6].textContent = translations[lang].navResponsible;
+    navBtns[7].textContent = translations[lang].navPolicy;
 
     // Calculator Labels
     document.querySelector("#calc-title").textContent = translations[lang].calcTitle;
@@ -274,6 +352,9 @@ const updateLanguage = (lang) => {
     document.querySelector("#analysis-title").textContent = translations[lang].analysisTitle;
     document.querySelector("#tax-title").textContent = translations[lang].taxTitle;
     document.querySelector("#stats-title").textContent = translations[lang].statsTitle;
+    document.querySelector("#faq-title").textContent = translations[lang].faqTitle;
+    document.querySelector("#about-us-title").textContent = translations[lang].aboutUsTitle;
+    document.querySelector("#responsible-title").textContent = translations[lang].responsibleTitle;
     if (document.querySelector("#policy-title")) {
         document.querySelector("#policy-title").textContent = translations[lang].navPolicy;
     }
@@ -282,6 +363,9 @@ const updateLanguage = (lang) => {
     analysisContent.innerHTML = translations[lang].analysisBody;
     taxContent.innerHTML = translations[lang].taxBody;
     statsContent.innerHTML = translations[lang].statsBody;
+    faqContent.innerHTML = translations[lang].faqBody;
+    aboutUsContent.innerHTML = translations[lang].aboutUsBody;
+    responsibleContent.innerHTML = translations[lang].responsibleBody;
     policyContent.innerHTML = translations[lang].policyBody;
 
     // Update Comment Section
@@ -331,14 +415,34 @@ calcBtn.addEventListener("click", () => {
 });
 
 // Tab switching logic
+const switchTab = (target) => {
+    navBtns.forEach(b => b.classList.remove("active"));
+    tabContents.forEach(c => c.classList.remove("active"));
+    
+    // Find matching button
+    const activeBtn = Array.from(navBtns).find(b => b.getAttribute("data-target") === target);
+    if (activeBtn) activeBtn.classList.add("active");
+    
+    const targetSection = document.getElementById(target);
+    if (targetSection) {
+        targetSection.classList.add("active");
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+};
+
 navBtns.forEach(btn => {
     btn.addEventListener("click", () => {
         const target = btn.getAttribute("data-target");
-        navBtns.forEach(b => b.classList.remove("active"));
-        tabContents.forEach(c => c.classList.remove("active"));
-        btn.classList.add("active");
-        document.getElementById(target).classList.add("active");
+        switchTab(target);
     });
+});
+
+document.querySelectorAll(".footer-link").forEach(link => {
+    link.onclick = (e) => {
+        e.preventDefault();
+        const target = link.getAttribute("data-target");
+        switchTab(target);
+    };
 });
 
 // Initial Language Logic
