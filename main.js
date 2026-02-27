@@ -359,16 +359,18 @@ const formatCurrency = (num, lang) => {
 };
 
 const updateLanguage = (lang) => {
-    // Nav Buttons
-    navBtns[0].textContent = translations[lang].navHome;
-    navBtns[1].textContent = translations[lang].navAnalysis;
-    navBtns[2].textContent = translations[lang].navTax;
-    navBtns[3].textContent = translations[lang].navStats;
-    navBtns[4].textContent = translations[lang].navAi;
-    navBtns[5].textContent = translations[lang].navFaq;
-    navBtns[6].textContent = translations[lang].navAbout;
-    navBtns[7].textContent = translations[lang].navResponsible;
-    navBtns[8].textContent = translations[lang].navPolicy;
+    // Nav Buttons using data-target to be more robust
+    const findNav = (target) => Array.from(navBtns).find(b => b.getAttribute("data-target") === target);
+    
+    if(findNav("generator-section")) findNav("generator-section").textContent = translations[lang].navHome;
+    if(findNav("analysis-section")) findNav("analysis-section").textContent = translations[lang].navAnalysis;
+    if(findNav("tax-section")) findNav("tax-section").textContent = translations[lang].navTax;
+    if(findNav("stats-section")) findNav("stats-section").textContent = translations[lang].navStats;
+    if(findNav("ai-section")) findNav("ai-section").textContent = translations[lang].navAi;
+    if(findNav("faq-section")) findNav("faq-section").textContent = translations[lang].navFaq;
+    if(findNav("about-section")) findNav("about-section").textContent = translations[lang].navAbout;
+    if(findNav("responsible-section")) findNav("responsible-section").textContent = translations[lang].navResponsible;
+    if(findNav("privacy-section")) findNav("privacy-section").textContent = translations[lang].navPolicy;
 
     // Calculator Labels
     document.querySelector("#calc-title").textContent = translations[lang].calcTitle;
