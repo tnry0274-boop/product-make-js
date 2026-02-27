@@ -104,27 +104,27 @@ const translations = {
                     <tr><th>회차</th><th>당첨 번호</th><th>보너스</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>1158회</td><td>2, 10, 14, 22, 32, 36</td><td>41</td></tr>
-                    <tr><td>1157회</td><td>14, 16, 27, 35, 39, 45</td><td>5</td></tr>
-                    <tr><td>1156회</td><td>1, 11, 21, 25, 38, 40</td><td>17</td></tr>
-                    <tr><td>1155회</td><td>4, 9, 12, 16, 20, 29</td><td>45</td></tr>
-                    <tr><td>1154회</td><td>6, 12, 19, 24, 34, 41</td><td>4</td></tr>
-                    <tr><td>1153회</td><td>10, 15, 18, 21, 34, 42</td><td>6</td></tr>
-                    <tr><td>1152회</td><td>7, 17, 22, 29, 31, 44</td><td>2</td></tr>
-                    <tr><td>1151회</td><td>3, 12, 20, 25, 32, 44</td><td>21</td></tr>
-                    <tr><td>1150회</td><td>1, 5, 8, 11, 28, 40</td><td>15</td></tr>
-                    <tr><td>1149회</td><td>2, 11, 15, 23, 31, 41</td><td>45</td></tr>
+                    <tr><td>1212회</td><td>5, 8, 25, 31, 41, 44</td><td>45</td></tr>
+                    <tr><td>1211회</td><td>23, 26, 27, 35, 38, 40</td><td>10</td></tr>
+                    <tr><td>1210회</td><td>1, 7, 9, 17, 27, 38</td><td>31</td></tr>
+                    <tr><td>1209회</td><td>2, 17, 20, 35, 37, 39</td><td>24</td></tr>
+                    <tr><td>1208회</td><td>6, 27, 30, 36, 38, 42</td><td>25</td></tr>
+                    <tr><td>1207회</td><td>10, 22, 24, 27, 38, 45</td><td>11</td></tr>
+                    <tr><td>1206회</td><td>1, 3, 17, 26, 27, 42</td><td>23</td></tr>
+                    <tr><td>1205회</td><td>1, 4, 16, 23, 31, 41</td><td>2</td></tr>
+                    <tr><td>1204회</td><td>8, 16, 28, 30, 31, 44</td><td>27</td></tr>
+                    <tr><td>1203회</td><td>3, 6, 18, 29, 35, 39</td><td>24</td></tr>
                 </tbody>
             </table>
             
             <h3 style="margin-top:30px;">미출현 번호 분석 (최근 100회 기준 최소 출현)</h3>
             <p>최근 100회 동안 상대적으로 적게 등장한 번호들입니다. 통계적으로는 모든 숫자의 출현 빈도가 수렴하지만, 단기적으로는 특정 숫자가 덜 나올 수 있습니다.</p>
             <div class="badge-container">
-                <span class="stat-badge">9번 (6회)</span>
-                <span class="stat-badge">22번 (7회)</span>
-                <span class="stat-badge">29번 (7회)</span>
-                <span class="stat-badge">41번 (8회)</span>
-                <span class="stat-badge">18번 (8회)</span>
+                <span class="stat-badge">12번 (미출현)</span>
+                <span class="stat-badge">13번 (미출현)</span>
+                <span class="stat-badge">15번 (미출현)</span>
+                <span class="stat-badge">19번 (미출현)</span>
+                <span class="stat-badge">21번 (미출현)</span>
             </div>
         `,
         faqTitle: "자주 묻는 질문 (FAQ)",
@@ -232,27 +232,27 @@ const translations = {
                     <tr><th>Draw</th><th>Winning Numbers</th><th>Bonus</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>1158</td><td>2, 10, 14, 22, 32, 36</td><td>41</td></tr>
-                    <tr><td>1157</td><td>14, 16, 27, 35, 39, 45</td><td>5</td></tr>
-                    <tr><td>1156</td><td>1, 11, 21, 25, 38, 40</td><td>17</td></tr>
-                    <tr><td>1155</td><td>4, 9, 12, 16, 20, 29</td><td>45</td></tr>
-                    <tr><td>1154</td><td>6, 12, 19, 24, 34, 41</td><td>4</td></tr>
-                    <tr><td>1153</td><td>10, 15, 18, 21, 34, 42</td><td>6</td></tr>
-                    <tr><td>1152</td><td>7, 17, 22, 29, 31, 44</td><td>2</td></tr>
-                    <tr><td>1151</td><td>3, 12, 20, 25, 32, 44</td><td>21</td></tr>
-                    <tr><td>1150</td><td>1, 5, 8, 11, 28, 40</td><td>15</td></tr>
-                    <tr><td>1149</td><td>2, 11, 15, 23, 31, 41</td><td>45</td></tr>
+                    <tr><td>1212</td><td>5, 8, 25, 31, 41, 44</td><td>45</td></tr>
+                    <tr><td>1211</td><td>23, 26, 27, 35, 38, 40</td><td>10</td></tr>
+                    <tr><td>1210</td><td>1, 7, 9, 17, 27, 38</td><td>31</td></tr>
+                    <tr><td>1209</td><td>2, 17, 20, 35, 37, 39</td><td>24</td></tr>
+                    <tr><td>1208</td><td>6, 27, 30, 36, 38, 42</td><td>25</td></tr>
+                    <tr><td>1207</td><td>10, 22, 24, 27, 38, 45</td><td>11</td></tr>
+                    <tr><td>1206</td><td>1, 3, 17, 26, 27, 42</td><td>23</td></tr>
+                    <tr><td>1205</td><td>1, 4, 16, 23, 31, 41</td><td>2</td></tr>
+                    <tr><td>1204</td><td>8, 16, 28, 30, 31, 44</td><td>27</td></tr>
+                    <tr><td>1203</td><td>3, 6, 18, 29, 35, 39</td><td>24</td></tr>
                 </tbody>
             </table>
             
             <h3 style="margin-top:30px;">Cold Numbers (Least frequent in last 100 draws)</h3>
             <p>These numbers have appeared the least frequently in the recent 100 draws. While every number is theoretically equally likely to appear, some may show up less often in a small sample size.</p>
             <div class="badge-container">
-                <span class="stat-badge">No. 9 (6 times)</span>
-                <span class="stat-badge">No. 22 (7 times)</span>
-                <span class="stat-badge">No. 29 (7 times)</span>
-                <span class="stat-badge">No. 41 (8 times)</span>
-                <span class="stat-badge">No. 18 (8 times)</span>
+                <span class="stat-badge">No. 12 (Cold)</span>
+                <span class="stat-badge">No. 13 (Cold)</span>
+                <span class="stat-badge">No. 15 (Cold)</span>
+                <span class="stat-badge">No. 19 (Cold)</span>
+                <span class="stat-badge">No. 21 (Cold)</span>
             </div>
         `,
         faqTitle: "Frequently Asked Questions (FAQ)",
